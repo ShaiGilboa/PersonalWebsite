@@ -3,7 +3,7 @@
   width: clamp(400px, 40vw, 700px);
   height: clamp(400px, 40vw, 700px);
   margin: auto;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .App-logo {
