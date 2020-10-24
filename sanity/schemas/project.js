@@ -64,7 +64,7 @@ export default {
       }
       return {
         ...selection,
-        status: <span style={{fontSize: '1.5rem'}}>{status ? EMOJIS[status] : '🎫'}</span>
+        status: EMOJIS[status]
       }
     }
   }
