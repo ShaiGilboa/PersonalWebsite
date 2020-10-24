@@ -1,6 +1,6 @@
 export default {
-  name: 'post',
-  title: 'Post',
+  name: 'project',
+  title: 'Project',
   type: 'document',
   fields: [
     {
@@ -18,10 +18,9 @@ export default {
       }
     },
     {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'}
+      name: 'description',
+      title: 'Description',
+      type: 'text'
     },
     {
       name: 'mainImage',
@@ -38,9 +37,9 @@ export default {
       of: [{type: 'reference', to: {type: 'category'}}]
     },
     {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime'
+      name: 'status',
+      title: 'Status',
+      type: 'string'   // 'done' | 'development' | 'fixer-upper'
     },
     {
       name: 'body',
@@ -52,14 +51,21 @@ export default {
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage'
+      media: 'mainImage',
+      subtitle: 'description',
+      status: 'status',
     },
     prepare(selection) {
-      const {author} = selection
-      return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`
-      })
+      const {status, title, media, subtitle} = selection;
+      const EMOJIS = {
+        development: '🎫',
+        done: '✅',
+        "fixer-upper": '🚫'
+      }
+      return {
+        ...selection,
+        status: <span style={{fontSize: '1.5rem'}}>{status ? EMOJIS[status] : '🎫'}</span>
+      }
     }
   }
 }
