@@ -5,7 +5,15 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: "Shai Gilboa",
+    titleTemplate: "%s · The Website",
+    description:
+      "Welcome!",
+    url: "https://www.shaigilboa.com", // No trailing slash allowed!
+    // image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
+    twitterUsername: "@GilboaShai",
+  },
   plugins: [
     `gatsby-plugin-react-helmet`
   ],
