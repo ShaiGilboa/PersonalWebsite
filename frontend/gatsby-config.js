@@ -22,6 +22,13 @@ module.exports = {
         path: path.join(__dirname, `src`, `images`),
       },
     },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: `${process.env.SANITY_PROJECT_ID}`,
+        dataset: `${process.env.SANITY_DATASET}`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
