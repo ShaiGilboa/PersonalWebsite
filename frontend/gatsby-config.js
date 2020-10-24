@@ -5,6 +5,32 @@
  */
 
 module.exports = {
-  /* Your site config here */
-  plugins: [],
+  siteMetadata: {
+    title: "Shai Gilboa",
+    titleTemplate: "%s · The Website",
+    description:
+      "Welcome!",
+    url: "https://www.shaigilboa.com", // No trailing slash allowed!
+    // image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
+    twitterUsername: "@GilboaShai",
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: `${process.env.SANITY_PROJECT_ID}`,
+        dataset: `${process.env.SANITY_DATASET}`,
+      },
+    },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+  ],
 }

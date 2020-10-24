@@ -1,15 +1,15 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 import { Helmet } from "react-helmet"
 
-function SEO({ description, lang, meta, title, link, script }) {
+const SEO : React.FC<PropsWithChildren<seoProps>> = ({ description = '', lang = "en", meta = [], title = 'Shai Gilboa', link = [], script = [] }) => {
   const metaDescription = description || "Personal Website"
 
-  return (
+  return (<div>
     <Helmet
       htmlAttributes={{
-        lang: "en",
+        lang,
       }}
-      title={"Shai Gilboa"}
+      title={title}
       titleTemplate={`%s | Shai Gilboa`}
       meta={[
         {
@@ -18,7 +18,7 @@ function SEO({ description, lang, meta, title, link, script }) {
         },
         {
           property: `og:title`,
-          content: "Shai Gilboa",
+          content: title,
         },
         {
           property: `og:description`,
@@ -38,23 +38,22 @@ function SEO({ description, lang, meta, title, link, script }) {
         },
         {
           name: `twitter:title`,
-          content: "Shai Gilboa",
+          content: title,
         },
         {
           name: `twitter:description`,
           content: metaDescription,
         },
       ].concat(meta)}
+      link={[
+      ].concat(link)}
+      script={[
+      ].concat(script)}
     />
+  </div>
   )
 }
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-  link: [],
-  script: []
-}
+
 
 export default SEO
