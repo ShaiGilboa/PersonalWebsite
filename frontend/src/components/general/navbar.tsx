@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
-import { MEDIA } from '../utils/constants';
+import { MEDIA } from '../../utils/constants';
 
 interface props {
   style?: React.CSSProperties,
