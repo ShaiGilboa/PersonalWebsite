@@ -31,10 +31,10 @@ export default {
       }
     },
     {
-      name: 'categories',
-      title: 'Categories',
+      name: 'techs',
+      title: 'Techs',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}]
+      of: [{type: 'reference', to: {type: 'tech'}}]
     },
     {
       name: 'status',
