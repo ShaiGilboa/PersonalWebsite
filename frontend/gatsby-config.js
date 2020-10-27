@@ -3,6 +3,12 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+console.log('process.env.SANITY_DATASET', process.env.SANITY_DATASET)
+console.log('process.env.SANITY_PROJECT_ID', process.env.SANITY_PROJECT_ID)
 
 module.exports = {
   siteMetadata: {
@@ -19,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: path.join(__dirname, `src`, `images`),
+        path: `${__dirname}/src/pages/`,
       },
     },
     {
@@ -27,6 +33,7 @@ module.exports = {
       options: {
         projectId: `${process.env.SANITY_PROJECT_ID}`,
         dataset: `${process.env.SANITY_DATASET}`,
+        graphqlTag: 'default',
       },
     },
     `gatsby-plugin-react-helmet`,

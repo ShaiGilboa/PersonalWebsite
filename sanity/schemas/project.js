@@ -64,14 +64,7 @@ export default {
       name: 'links',
       title: 'Links',
       type: 'array',
-      of: [{
-        title: 'info',
-        type: 'object',
-        fields: [
-          {name: 'url', type: 'url', title: 'Info Link'},
-          {name: 'description', type: 'string', title: 'Link Description'}
-        ]
-      }]
+      of: [{type: 'reference', to: {type: 'link'}}]
     }
 
   ],
