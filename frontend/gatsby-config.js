@@ -7,6 +7,17 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const { SANITY_DATASET, SANITY_PROJECT_ID } = process.env
+console.log('SANITY_PROJECT_ID',SANITY_PROJECT_ID)
+console.log('SANITY_DATASET',SANITY_DATASET)
+if(!SANITY_DATASET) {
+  throw new Error('please add the Sanity Dataset to the environment variables')
+}
+
+if(!SANITY_PROJECT_ID) {
+  throw new Error('please add the Sanity Project Id to the environment variables')
+}
+
 console.log('process.env.SANITY_DATASET', process.env.SANITY_DATASET)
 console.log('process.env.SANITY_PROJECT_ID', process.env.SANITY_PROJECT_ID)
 
