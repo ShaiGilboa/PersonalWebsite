@@ -1,47 +1,44 @@
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  // const result = await graphql(
-  //   `
-  //     {
-  //       articles: allStrapiArticle {
-  //         edges {
-  //           node {
-  //             strapiId
-  //           }
-  //         }
-  //       }
-  //       categories: allStrapiCategory {
-  //         edges {
-  //           node {
-  //             strapiId
-  //           }
-  //         }
-  //       }
-  //       webpages: allStrapiWebpage {
-  //         edges {
-  //           node {
-  //             name
-  //           }
-  //         }
-  //       }
-  //       bios: allStrapiBio {
-  //         edges {
-  //           node {
-  //             name
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
+  const result = await graphql(
+    `
+    {
+      projects: allSanityProject {
+          edges {
+            node {
+              _id
+              slug {
+                current
+              }
+            }
+          }
+        }
+    }
+      
+    `
+  )
 
-  // if (result.errors) {
-  //   throw result.errors
-  // }
+  if (result.errors) {
+    throw result.errors
+  }
 
-  // const articles = result.data.articles.edges
+  const projects = result.data.projects.edges
   // const categories = result.data.categories.edges
   // const webpages = result.data.webpages.edges
+  // console.log('projects',projects[0])
+  projects.forEach((project, index) => {
+    console.log('+++++++++++++++++++++++++++')
+    console.log('project.node._id',project.node._id)
+    console.log('+++++++++++++++++++++++++++')
+    createPage({
+      path: `projects/${project.node.slug.current}`,
+      component: require.resolve("./src/templates/project.tsx"),
+      context: {
+        id: project.node._id
+      }
+    })
+  });
 
   // articles.forEach((article, index) => {
   //   createPage({

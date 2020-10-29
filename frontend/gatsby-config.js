@@ -18,9 +18,6 @@ if(!SANITY_PROJECT_ID) {
   throw new Error('please add the Sanity Project Id to the environment variables')
 }
 
-console.log('process.env.SANITY_DATASET', process.env.SANITY_DATASET)
-console.log('process.env.SANITY_PROJECT_ID', process.env.SANITY_PROJECT_ID)
-
 module.exports = {
   siteMetadata: {
     title: "Shai Gilboa",
@@ -36,7 +33,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/pages/`,
+        path: `${__dirname}/src/images/`,
       },
     },
     {
@@ -45,6 +42,9 @@ module.exports = {
         projectId: `${process.env.SANITY_PROJECT_ID}`,
         dataset: `${process.env.SANITY_DATASET}`,
         graphqlTag: 'default',
+        // token: process.env.SANITY_TOKEN,
+        watchMode: true,
+        overlayDrafts: true
       },
     },
     `gatsby-plugin-react-helmet`,
