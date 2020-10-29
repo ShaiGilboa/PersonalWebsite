@@ -9,7 +9,7 @@ interface props {
 
 export const query = graphql`
   query ProjectInfo ($id : String!) {
-    sanityProject (_id: { eq: $id}) {
+    info: sanityProject (_id: { eq: $id}) {
       description
       title
       mainImage {
