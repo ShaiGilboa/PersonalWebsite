@@ -1,5 +1,9 @@
 import React, { PropsWithChildren, useState } from 'react';
+import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
+
+import { StaticQuery, graphql, Link } from "gatsby"
+
 import { MEDIA } from '../../utils/constants';
 
 interface props {
@@ -8,16 +12,59 @@ interface props {
 };
 
 const Navbar : React.FC<PropsWithChildren<props>> = () => {
-  const [hover, setHover] = useState<boolean>(false);
+  const [openContent, setOpenContent] = useState<boolean>(false);
   return (
     <Wrapper data-css='Navbar'
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseEnter={() => setOpenContent(true)}
+      onMouseLeave={() => setOpenContent(false)}
       onClick={() => {
-        if (!hover) setHover(true)
+        if (!openContent) setOpenContent(true)
       }}
     >
-      <Content>
+      {/* <StaticQuery
+      query={graphql`
+        query {
+          projects: allSanityProject {
+            edges {
+              node {
+                _id
+                slug {
+                  current
+                }
+                title
+                description
+                mainImage {
+                  asset {
+                    path
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={(data : any) => (
+      <>
+        <Navbar />
+        <Main>
+          {console.log('data', data)}
+          <ul>
+            {data.projects.edges.map((project, index) => {
+            console.log('node', project.node)
+            return <li key={index + project.node._id}>
+              <Link to={`/projects/${project.node.slug.current}`}>
+                {project.node.title}
+              </Link>
+            </li>})}
+          </ul>
+        </Main>
+      </>
+      )} */}
+    {/* /> */}
+      <Content
+        open={openContent}
+      >
 
       </Content>
     </Wrapper>
@@ -31,11 +78,14 @@ const Wrapper = styled.div`
   background-color: red;
 
   @media (min-width: ${MEDIA.tablet}) {
-    width: 3rem;
+    width: 100%;
     height: 100vh;
   }
 `;
 
-const Content = styled.div`
-
+const Content = styled(motion.div)<{open : boolean}>`
+  height: 100%;
+  width: ${props => props.open ? '100%' : '1rem'};
+  background: blue;
+  transition: width 1s cubic-bezier(0.47, 1.22, 1, 1);
 `;
