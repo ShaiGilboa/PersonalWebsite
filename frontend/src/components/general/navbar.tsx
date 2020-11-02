@@ -21,52 +21,40 @@ const Navbar : React.FC<PropsWithChildren<props>> = () => {
         if (!openContent) setOpenContent(true)
       }}
     >
-      {/* <StaticQuery
+      <StaticQuery
       query={graphql`
         query {
-          projects: allSanityProject {
+          pageNames: allSanityPage {
             edges {
               node {
-                _id
+                title
                 slug {
                   current
-                }
-                title
-                description
-                mainImage {
-                  asset {
-                    path
-                    url
-                  }
                 }
               }
             }
           }
         }
       `}
-      render={(data : any) => (
-      <>
-        <Navbar />
-        <Main>
-          {console.log('data', data)}
-          <ul>
-            {data.projects.edges.map((project, index) => {
-            console.log('node', project.node)
-            return <li key={index + project.node._id}>
-              <Link to={`/projects/${project.node.slug.current}`}>
-                {project.node.title}
-              </Link>
-            </li>})}
-          </ul>
-        </Main>
-      </>
-      )} */}
-    {/* /> */}
+      render={({pageNames} : any) => (
       <Content
         open={openContent}
       >
-
+        <Pages>
+          {console.log('pageNames', pageNames.edges[0])}
+          {pageNames.edges.map(({node}) => {
+            console.log('pageNode', node)
+            return <li key={`nav-list-${node.title}`}>
+                <Link to={`/${node.slug.current}`}>
+                  {node.title}
+                </Link>
+              </li>
+            })
+          }
+        </Pages>
       </Content>
+      )}
+    />
     </Wrapper>
   )
 }
@@ -83,9 +71,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Content = styled(motion.div)<{open : boolean}>`
+const Content = styled.div<{open : boolean}>`
   height: 100%;
   width: ${props => props.open ? '100%' : '1rem'};
   background: blue;
-  transition: width 1s cubic-bezier(0.47, 1.22, 1, 1);
+  transition: width 0.6s cubic-bezier(0.47, 1.22, 1, 1);
 `;
+
+const Pages = styled.ul`
+
+`

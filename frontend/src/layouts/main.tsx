@@ -2,6 +2,7 @@ import React, { Children, PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import Seo from '../components/general/seo';
 import { MEDIA } from '../utils/constants';
+import GlobalStyle from '../css/globalStyles';
 
 interface props {
   style?: React.CSSProperties,
@@ -12,6 +13,7 @@ const MainLayout : React.FC<PropsWithChildren<props>> = ({ seoProps, children })
 
   return (
     <Wrapper data-css='MainLayout'>
+      <GlobalStyle />
       <Seo {...seoProps} />
       {children}
     </Wrapper>
