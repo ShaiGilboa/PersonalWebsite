@@ -13,6 +13,9 @@ const Navbar : React.FC<PropsWithChildren<props>> = () => {
     <Wrapper data-css='Navbar'
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onClick={() => {
+        if (!hover) setHover(true)
+      }}
     >
       <Content>
 
