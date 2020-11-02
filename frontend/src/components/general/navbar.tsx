@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import styled from '@emotion/styled';
 import { MEDIA } from '../../utils/constants';
 
@@ -8,10 +8,11 @@ interface props {
 };
 
 const Navbar : React.FC<PropsWithChildren<props>> = () => {
-
+  const [hover, setHover] = useState<boolean>(false);
   return (
     <Wrapper data-css='Navbar'
-      
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
       <Content>
 
