@@ -10,8 +10,12 @@ interface props {
 const Navbar : React.FC<PropsWithChildren<props>> = () => {
 
   return (
-    <Wrapper data-css='Navbar'>
-      Navbar
+    <Wrapper data-css='Navbar'
+      
+    >
+      <Content>
+
+      </Content>
     </Wrapper>
   )
 }
@@ -24,5 +28,10 @@ const Wrapper = styled.div`
 
   @media (min-width: ${MEDIA.tablet}) {
     width: 3rem;
+    height: 100vh;
   }
+`;
+
+const Content = styled.div`
+
 `;
