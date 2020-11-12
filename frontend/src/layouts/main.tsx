@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Seo from '../components/general/seo';
 import { MEDIA } from '../utils/constants';
 import GlobalStyle from '../css/globalStyles';
+import { seoProps } from '../types';
 
 interface props {
   style?: React.CSSProperties,

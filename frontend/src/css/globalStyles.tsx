@@ -33,6 +33,8 @@ const GlobalStyle = ({} : props) => {
           font: 'inherit';
           vertical-align: 'baseline';
           box-sizing: 'border-box';
+          text-decoration: none;
+          color: inherit;
         }
     
         article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{

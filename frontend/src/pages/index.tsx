@@ -2,6 +2,8 @@ import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby"
 import Navbar from "../components/general/navbar";
 import SEO from "../components/general/seo";
+import Img from 'gatsby-image';
+
 
 import "../css/App.css"
 import "../css/index.css"
@@ -26,6 +28,10 @@ const Home = () => (
                   asset {
                     path
                     url
+                    fixed {
+                      srcWebp
+                      srcSetWebp
+                    }
                   }
                 }
               }
@@ -44,6 +50,7 @@ const Home = () => (
             return <li key={index + project.node._id}>
               <Link to={`/projects/${project.node.slug.current}`}>
                 {project.node.title}
+                <Img fixed={project.node.mainImage.fixed}/>
               </Link>
             </li>})}
           </ul>
