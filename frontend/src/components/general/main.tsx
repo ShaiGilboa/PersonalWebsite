@@ -20,4 +20,5 @@ export default Main;
 const Wrapper = styled.div`
   grid-area: main;
   overflow: auto;
+  max-height: 100vh;
 `;

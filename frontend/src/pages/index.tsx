@@ -29,9 +29,21 @@ const Home = () => (
                   asset {
                     path
                     url
-                    fixed {
+                    fixed(width: 400) {
                       srcWebp
                       srcSetWebp
+                      src
+                      srcSet
+                      width
+                      height
+                    }
+                    fluid(maxWidth: 700) {
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      aspectRatio
+                      sizes
                     }
                   }
                 }
@@ -49,12 +61,13 @@ const Home = () => (
           <ProjectsContainer>
             <ProjectsList>
               {data.projects.edges.map((project, index) => {
-                // console.log('node', project.node)
+                console.log('node', project.node.mainImage.asset.fixed)
               return <ProjectCard
                       key={index + project.node._id}
                       slug={`/projects/${project.node.slug.current}`}
                       title={project.node.title}
-                      image={project.node.mainImage.fixed}
+                      image1={project.node.mainImage.asset.fixed}
+                      image2={project.node.mainImage.asset.fluid}
                     />
                 })
               }
@@ -78,7 +91,8 @@ const Content = styled.p`
 `;
 
 const ProjectsContainer = styled.div`
-
+  /* max-height: 100%; */
+  /* overflow: auto; */
 `;
 
 const ProjectsList = styled.ul`
