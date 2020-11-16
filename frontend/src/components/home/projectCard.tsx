@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 
-import Img, { FixedObject } from 'gatsby-image';
+import Img, { FixedObject, FluidObject } from 'gatsby-image';
 import { Link } from "gatsby"
 
 
@@ -10,7 +10,7 @@ interface props {
   slug : string,
   title : string,
   image1: FixedObject | FixedObject[] ,
-  image2: FixedObject | FixedObject[] ,
+  image2: FluidObject | FluidObject[] ,
 };
 
 const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image1, image2 }) => {
@@ -21,9 +21,13 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image1,
         {title}
       </Link>
       <p>1</p>
-      <Img fixed={image1}/>
+      {/* <Img fixed={image1}/> */}
       <p>2</p>
-      <Img fixed={image2}/>
+      <Img fluid={image2}
+        // objectFit="cover"
+        // objectPosition="50% 50%"
+        alt="g"
+      />
     </Wrapper>
   )
 }
@@ -31,5 +35,5 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image1,
 export default ProjectCard;
 
 const Wrapper = styled.li`
-
+  width: 200px;
 `;

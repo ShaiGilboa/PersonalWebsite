@@ -32,7 +32,7 @@ const Home = () => (
                     fixed(height: 400) {
                       ...GatsbySanityImageFixed
                     }
-                    fluid(maxWidth: 700) {
+                    fluid(maxWidth: 10) {
                       ...GatsbySanityImageFluid
                     }
                   }
