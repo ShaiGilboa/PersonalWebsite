@@ -39,14 +39,15 @@ const Navbar : React.FC<PropsWithChildren<props>> = () => {
             childImageSharp {
               fixed (width: 125, height: 125){
                 # base64
-                tracedSVG
-                width
-                height
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                originalName
+                # tracedSVG
+                # width
+                # height
+                # src
+                # srcSet
+                # srcWebp
+                # srcSetWebp
+                # originalName
+                ...GatsbyImageSharpFixed_noBase64
               }
             }
           }
