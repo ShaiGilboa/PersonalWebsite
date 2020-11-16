@@ -1,12 +1,13 @@
 import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby"
+import styled from '@emotion/styled';
+
 import Navbar from "../components/general/navbar";
 import SEO from "../components/general/seo";
 import Img from 'gatsby-image';
 
 
 import "../css/App.css"
-import "../css/index.css"
 import Layout from "../layouts/main";
 import Main from "../components/general/main";
 
@@ -43,7 +44,8 @@ const Home = () => (
       <>
         <Navbar />
         <Main>
-          {console.log('data', data)}
+          <Title>Welcome</Title>
+          <Content>this will something that I have to say to introduce myself</Content>
           <ul>
             {data.projects.edges.map((project, index) => {
             console.log('node', project.node)
@@ -62,3 +64,11 @@ const Home = () => (
 )
 
 export default Home;
+
+const Title = styled.h1`
+
+`;
+
+const Content = styled.p`
+
+`;
