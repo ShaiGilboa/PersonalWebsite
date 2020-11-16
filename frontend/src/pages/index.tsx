@@ -25,13 +25,14 @@ const Home = () => (
                 }
                 title
                 description
+                techs {
+                  title
+                  link
+                }
                 mainImage {
                   asset {
                     path
                     url
-                    fixed(height: 400) {
-                      ...GatsbySanityImageFixed
-                    }
                     fluid(maxWidth: 10) {
                       ...GatsbySanityImageFluid
                     }
@@ -56,8 +57,9 @@ const Home = () => (
                       key={index + project.node._id}
                       slug={`/projects/${project.node.slug.current}`}
                       title={project.node.title}
-                      image1={project.node.mainImage.asset.fixed}
-                      image2={project.node.mainImage.asset.fluid}
+                      image={project.node.mainImage.asset.fluid}
+                      description={project.node.description}
+                      techs={project.node.techs}
                     />
                 })
               }

@@ -3,31 +3,35 @@ import styled from '@emotion/styled';
 
 import Img, { FixedObject, FluidObject } from 'gatsby-image';
 import { Link } from "gatsby"
+import { TechLink } from '../../types';
 
 
 interface props {
   style?: React.CSSProperties,
   slug : string,
   title : string,
-  image1: FixedObject | FixedObject[] ,
-  image2: FluidObject | FluidObject[] ,
+  image: FluidObject | FluidObject[] ,
+  description: string,
+  techs: TechLink[],
 };
 
-const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image1, image2 }) => {
+const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, description, techs }) => {
 
   return (
     <Wrapper data-css='ProjectCard'>
       <Link to={slug}>
         {title}
+        <Img fluid={image}
+          // objectFit="cover"
+          // objectPosition="50% 50%"
+          alt="g"
+        />
       </Link>
-      <p>1</p>
-      {/* <Img fixed={image1}/> */}
-      <p>2</p>
-      <Img fluid={image2}
-        // objectFit="cover"
-        // objectPosition="50% 50%"
-        alt="g"
-      />
+      <Techs>
+        {techs.map((tech : TechLink) => <Tech>
+          <a target="__blank" href={tech.link}>{tech.title}</a>
+        </Tech>)}
+      </Techs>
     </Wrapper>
   )
 }
@@ -36,4 +40,12 @@ export default ProjectCard;
 
 const Wrapper = styled.li`
   width: 200px;
+`;
+
+const Techs = styled.ul`
+
+`;
+
+const Tech = styled.li`
+
 `;

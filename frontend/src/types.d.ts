@@ -8,3 +8,8 @@ export interface seoProps {
   script?: string[],
   title?: string,
 } 
+
+export interface TechLink {
+  title: string,
+  link: string,
+}

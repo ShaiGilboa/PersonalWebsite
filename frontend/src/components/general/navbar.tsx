@@ -38,15 +38,6 @@ const Navbar : React.FC<PropsWithChildren<props>> = () => {
           logo: file (relativePath: { eq: "logo.png" }){
             childImageSharp {
               fixed (width: 125, height: 125){
-                # base64
-                # tracedSVG
-                # width
-                # height
-                # src
-                # srcSet
-                # srcWebp
-                # srcSetWebp
-                # originalName
                 ...GatsbyImageSharpFixed_noBase64
               }
             }
