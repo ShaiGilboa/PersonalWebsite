@@ -28,9 +28,9 @@ exports.createPages = async ({ graphql, actions }) => {
   // const webpages = result.data.webpages.edges
   // console.log('projects',projects[0])
   projects.forEach((project, index) => {
-    console.log('+++++++++++++++++++++++++++')
-    console.log('project.node._id',project.node._id)
-    console.log('+++++++++++++++++++++++++++')
+    // console.log('+++++++++++++++++++++++++++')
+    // console.log('project.node._id',project.node._id)
+    // console.log('+++++++++++++++++++++++++++')
     createPage({
       path: `projects/${project.node.slug.current}`,
       component: require.resolve("./src/templates/project.tsx"),
