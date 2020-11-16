@@ -29,21 +29,11 @@ const Home = () => (
                   asset {
                     path
                     url
-                    fixed(width: 400) {
-                      srcWebp
-                      srcSetWebp
-                      src
-                      srcSet
-                      width
-                      height
+                    fixed(height: 400) {
+                      ...GatsbySanityImageFixed
                     }
                     fluid(maxWidth: 700) {
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      aspectRatio
-                      sizes
+                      ...GatsbySanityImageFluid
                     }
                   }
                 }
@@ -61,7 +51,7 @@ const Home = () => (
           <ProjectsContainer>
             <ProjectsList>
               {data.projects.edges.map((project, index) => {
-                console.log('node', project.node.mainImage.asset.fixed)
+                // console.log('node', project.node.mainImage.asset.fixed)
               return <ProjectCard
                       key={index + project.node._id}
                       slug={`/projects/${project.node.slug.current}`}
