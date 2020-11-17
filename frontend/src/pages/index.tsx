@@ -10,6 +10,7 @@ import "../css/App.css"
 import Layout from "../layouts/main";
 import Main from "../components/general/main";
 import ProjectCard from '../components/home/projectCard';
+import { MEDIA } from "../utils/constants";
 
 const Home = () => (
   <Layout>
@@ -33,7 +34,7 @@ const Home = () => (
                   asset {
                     path
                     url
-                    fluid(maxWidth: 10) {
+                    fluid(maxHeight: 400) {
                       ...GatsbySanityImageFluid
                     }
                   }
@@ -47,8 +48,10 @@ const Home = () => (
       <>
         <Navbar />
         <Main>
-          <Title>Welcome</Title>
-          <Content>this will something that I have to say to introduce myself</Content>
+          <TopContainer>
+            <Title>Welcome</Title>
+            <Content>this will something that I have to say to introduce myself</Content>
+          </TopContainer>
           <ProjectsContainer>
             <ProjectsList>
               {data.projects.edges.map((project, index) => {
@@ -60,6 +63,7 @@ const Home = () => (
                       image={project.node.mainImage.asset.fluid}
                       description={project.node.description}
                       techs={project.node.techs}
+                      index={index}
                     />
                 })
               }
@@ -73,6 +77,20 @@ const Home = () => (
 )
 
 export default Home;
+
+const TopContainer = styled.div`
+  
+  @media (min-width: ${MEDIA.tablet}) {
+    height: 90vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    text-align: center;
+
+  }
+`;
 
 const Title = styled.h1`
 
