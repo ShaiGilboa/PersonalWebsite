@@ -1,12 +1,15 @@
 import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby"
+import styled from '@emotion/styled';
+import Img from 'gatsby-image';
+
 import Navbar from "../components/general/navbar";
 import SEO from "../components/general/seo";
 
 import "../css/App.css"
-import "../css/index.css"
 import Layout from "../layouts/main";
 import Main from "../components/general/main";
+import ProjectCard from '../components/home/projectCard';
 
 const Home = () => (
   <Layout>
@@ -22,10 +25,17 @@ const Home = () => (
                 }
                 title
                 description
+                techs {
+                  title
+                  link
+                }
                 mainImage {
                   asset {
                     path
                     url
+                    fluid(maxWidth: 10) {
+                      ...GatsbySanityImageFluid
+                    }
                   }
                 }
               }
@@ -37,16 +47,24 @@ const Home = () => (
       <>
         <Navbar />
         <Main>
-          {console.log('data', data)}
-          <ul>
-            {data.projects.edges.map((project, index) => {
-            console.log('node', project.node)
-            return <li key={index + project.node._id}>
-              <Link to={`/projects/${project.node.slug.current}`}>
-                {project.node.title}
-              </Link>
-            </li>})}
-          </ul>
+          <Title>Welcome</Title>
+          <Content>this will something that I have to say to introduce myself</Content>
+          <ProjectsContainer>
+            <ProjectsList>
+              {data.projects.edges.map((project, index) => {
+                // console.log('node', project.node.mainImage.asset.fixed)
+              return <ProjectCard
+                      key={index + project.node._id}
+                      slug={`/projects/${project.node.slug.current}`}
+                      title={project.node.title}
+                      image={project.node.mainImage.asset.fluid}
+                      description={project.node.description}
+                      techs={project.node.techs}
+                    />
+                })
+              }
+            </ProjectsList>
+          </ProjectsContainer>
         </Main>
       </>
       )}
@@ -55,3 +73,20 @@ const Home = () => (
 )
 
 export default Home;
+
+const Title = styled.h1`
+
+`;
+
+const Content = styled.p`
+
+`;
+
+const ProjectsContainer = styled.div`
+  /* max-height: 100%; */
+  /* overflow: auto; */
+`;
+
+const ProjectsList = styled.ul`
+
+`;
