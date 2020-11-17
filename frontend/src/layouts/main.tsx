@@ -4,6 +4,8 @@ import Seo from '../components/general/seo';
 import { MEDIA } from '../utils/constants';
 import GlobalStyle from '../css/globalStyles';
 import { seoProps } from '../types';
+import Navbar from '../components/general/navbar';
+import Main from '../components/general/main';
 
 interface props {
   style?: React.CSSProperties,
@@ -16,7 +18,10 @@ const MainLayout : React.FC<PropsWithChildren<props>> = ({ seoProps, children })
     <Wrapper data-css='MainLayout'>
       <GlobalStyle />
       <Seo {...seoProps} />
-      {children}
+      <Navbar />
+      <Main>
+        {children}
+      </Main>
     </Wrapper>
   )
 }

@@ -1,6 +1,8 @@
 import React, { PropsWithChildren } from 'react';
-import { graphql } from "gatsby"
+import { graphql } from "gatsby";
+import Img from 'gatsby-image'
 import styled from '@emotion/styled';
+import MainLayout from '../layouts/main';
 
 interface props {
   style?: React.CSSProperties,
@@ -16,6 +18,9 @@ export const query = graphql`
         asset {
           url
           path
+          fluid(maxHeight: 400) {
+            ...GatsbySanityImageFluid
+          }
         }
       }
       techs {
@@ -41,9 +46,11 @@ export const query = graphql`
 const Project : React.FC<PropsWithChildren<props>> = ({ data }) => {
   console.log('data', data)
   return (
-    <Wrapper data-css='Project'>
-      Project
-    </Wrapper>
+    <MainLayout>
+      <Wrapper data-css='Project'>
+        Project
+      </Wrapper>
+    </MainLayout>
   )
 }
 

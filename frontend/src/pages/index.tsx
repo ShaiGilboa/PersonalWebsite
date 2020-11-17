@@ -46,30 +46,27 @@ const Home = () => (
       `}
       render={(data : any) => (
       <>
-        <Navbar />
-        <Main>
-          <TopContainer>
-            <Title>Welcome</Title>
-            <Content>this will something that I have to say to introduce myself</Content>
-          </TopContainer>
-          <ProjectsContainer>
-            <ProjectsList>
-              {data.projects.edges.map((project, index) => {
-                // console.log('node', project.node.mainImage.asset.fixed)
-              return <ProjectCard
-                      key={index + project.node._id}
-                      slug={`/projects/${project.node.slug.current}`}
-                      title={project.node.title}
-                      image={project.node.mainImage.asset.fluid}
-                      description={project.node.description}
-                      techs={project.node.techs}
-                      index={index}
-                    />
-                })
-              }
-            </ProjectsList>
-          </ProjectsContainer>
-        </Main>
+        <TopContainer>
+          <Title>Welcome</Title>
+          <Content>this will something that I have to say to introduce myself</Content>
+        </TopContainer>
+        <ProjectsContainer>
+          <ProjectsList>
+            {data.projects.edges.map((project, index) => {
+              // console.log('node', project.node.mainImage.asset.fixed)
+            return <ProjectCard
+                    key={index + project.node._id}
+                    slug={`/projects/${project.node.slug.current}`}
+                    title={project.node.title}
+                    image={project.node.mainImage.asset.fluid}
+                    description={project.node.description}
+                    techs={project.node.techs}
+                    index={index}
+                  />
+              })
+            }
+          </ProjectsList>
+        </ProjectsContainer>
       </>
       )}
     />

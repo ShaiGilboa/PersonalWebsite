@@ -33,12 +33,12 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
               <p>{title}</p>
             </AppearCenterOnHover>
           </ImgContainer>
+        </Link>
           <Techs>
             {techs.map((tech : TechLink) => <Tech>
               <a target="__blank" href={tech.link}>{tech.title}</a>
             </Tech>)}
           </Techs>
-        </Link>
       </Photo>
       <Description>
         <p>{description}</p>
@@ -77,8 +77,6 @@ const Photo = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  height: 100%;
-  width: 100%;
   position: relative;
 `;
 
