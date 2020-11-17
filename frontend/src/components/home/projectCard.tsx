@@ -51,6 +51,7 @@ const Wrapper = styled.li`
   a {
     width: 20%;
   }
+  
 `;
 
 const Photo = styled.div`
