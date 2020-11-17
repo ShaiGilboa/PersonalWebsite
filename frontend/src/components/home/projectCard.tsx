@@ -19,7 +19,7 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
 
   return (
     <Wrapper data-css='ProjectCard'>
-      <div>
+      <Photo>
         <Link to={slug}>
           {title}
           <Img fluid={image}
@@ -33,10 +33,10 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
             <a target="__blank" href={tech.link}>{tech.title}</a>
           </Tech>)}
         </Techs>
-      </div>
-      <div>
+      </Photo>
+      <Description>
         <p>{description}</p>
-      </div>
+      </Description>
     </Wrapper>
   )
 }
@@ -53,8 +53,16 @@ const Wrapper = styled.li`
   }
 `;
 
+const Photo = styled.div`
+  flex: 1 1 40%;
+`;
+
+const Description = styled.div`
+  flex: 2 2 60%;
+`;
+
 const Techs = styled.ul`
-  width: 20%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -63,4 +71,7 @@ const Techs = styled.ul`
 
 const Tech = styled.li`
   padding: 5px;
+  a {
+    width: fit-content;
+  }
 `;
