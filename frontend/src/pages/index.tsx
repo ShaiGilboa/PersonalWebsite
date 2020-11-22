@@ -42,10 +42,36 @@ const Home = () => (
               }
             }
           }
+          png: allFile(filter: {
+            sourceInstanceName: {eq: "techs"}
+            extension: {eq: "png"}
+          }) {
+            edges {
+              node {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
+                }
+                
+              }
+            }
+          }
+          svg: allFile(filter: {
+            sourceInstanceName: {eq: "techs"}
+            extension: {eq: "svg"}
+          }) {
+            edges {
+              node {
+                publicURL
+              }
+            }
+          }
         }
       `}
       render={(data : any) => (
       <>
+      {console.log('data.techs.edges', data.techs.edges)}
         <TopContainer>
           <Title>Welcome</Title>
           <Content>this will something that I have to say to introduce myself</Content>

@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 
 import Img, { FixedObject, FluidObject } from 'gatsby-image';
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { TechLink } from '../../types';
 import { MEDIA } from '../../utils/constants';
 
@@ -48,6 +48,10 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
 }
 
 export default ProjectCard;
+
+// export const query = graphql`
+
+// `
 
 const Wrapper = styled.li<{index : number}>`
   position: relative;
