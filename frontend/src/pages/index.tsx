@@ -11,6 +11,7 @@ import Layout from "../layouts/main";
 import Main from "../components/general/main";
 import ProjectCard from '../components/home/projectCard';
 import { MEDIA } from "../utils/constants";
+import { extractCorrectImageFromQuery } from "../utils/functions";
 
 const Home = () => (
   <Layout>
@@ -42,27 +43,16 @@ const Home = () => (
               }
             }
           }
-          png: allFile(filter: {
+          techs: allFile(filter: {
             sourceInstanceName: {eq: "techs"}
-            extension: {eq: "png"}
           }) {
             edges {
               node {
                 childImageSharp {
-                  fluid {
+                  fluid (maxHeight: 200){
                     ...GatsbyImageSharpFluid_tracedSVG
                   }
                 }
-                
-              }
-            }
-          }
-          svg: allFile(filter: {
-            sourceInstanceName: {eq: "techs"}
-            extension: {eq: "svg"}
-          }) {
-            edges {
-              node {
                 publicURL
               }
             }
@@ -87,6 +77,7 @@ const Home = () => (
                     image={project.node.mainImage.asset.fluid}
                     description={project.node.description}
                     techs={project.node.techs}
+                    techsImageQuery={data.techs.edges}
                     index={index}
                   />
               })

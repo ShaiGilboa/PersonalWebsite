@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import Img, { FixedObject, FluidObject } from 'gatsby-image';
 import { Link, graphql } from "gatsby"
 import { TechLink } from '../../types';
-import { MEDIA } from '../../utils/constants';
-
+import { CurrentURL, MEDIA } from '../../utils/constants';
+import { extractCorrectImageFromQuery } from '../../utils/functions';
 
 interface props {
   style?: React.CSSProperties,
@@ -15,10 +15,23 @@ interface props {
   description: string,
   techs: TechLink[],
   index: number,
+  techsImageQuery: any,
 };
 
-const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, description, techs, index }) => {
+const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, description, techs, index, techsImageQuery }) => {
+  // const imageSrc = extractCorrectImageFromQuery(techsImageQuery, tech.title);
 
+  const Image = (title : string) => {
+    const imageSrc = extractCorrectImageFromQuery(techsImageQuery, title);
+    console.log('typeof imageSrc', typeof imageSrc)
+    if (!imageSrc) return
+    console.log('+++++')
+    console.log('title, imageSrc', title, imageSrc)
+    return <Img 
+      fluid={imageSrc.fluid}
+      alt={title+'Img'}
+      />
+  }
   return (
     <Wrapper data-css='ProjectCard' index={index}>
       <Photo>
@@ -37,6 +50,7 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
           <Techs>
             {techs.map((tech : TechLink) => <Tech>
               <a target="__blank" href={tech.link}>{tech.title}</a>
+              {Image(tech.title)}
             </Tech>)}
           </Techs>
       </Photo>
