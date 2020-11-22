@@ -27,13 +27,15 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
     if (!imageSrc) return
     console.log('+++++')
     console.log('title, imageSrc', title, imageSrc)
-    return <div style={{width: "200px", height: "200px"}}>
-      <Img 
-      fluid={imageSrc.fluid}
-      alt={title+'Img'}
-      imgStyle={{ objectFit: 'contain' }}
-      />
-      </div>
+    return (
+      // <div style={{width: "200px", height: "200px"}}>
+        <Img 
+        fluid={imageSrc.fluid}
+        alt={title+'Img'}
+        imgStyle={{ objectFit: 'contain', maxHeight: "200px", maxWidth: '200px'}}
+        />
+        // </div>
+    )
   }
   return (
     <Wrapper data-css='ProjectCard' index={index}>
@@ -141,6 +143,8 @@ const Techs = styled.ul`
 
 const Tech = styled.li`
   padding: 5px;
+  width:200px;
+  height:200px;
   a {
     width: fit-content;
   }

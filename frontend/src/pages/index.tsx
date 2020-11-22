@@ -49,7 +49,7 @@ const Home = () => (
             edges {
               node {
                 childImageSharp {
-                  fluid(maxHeight: 200, maxWidth: 200) {
+                  fluid {
                     ...GatsbyImageSharpFluid_tracedSVG
                   }
                 }
