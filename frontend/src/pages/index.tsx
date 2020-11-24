@@ -50,24 +50,10 @@ const Home = () => (
               }
             }
           }
-          techs: allFile(filter: {
-            sourceInstanceName: {eq: "techs"}
-          }) {
-            edges {
-              node {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_tracedSVG
-                  }
-                }
-              }
-            }
-          }
         }
       `}
       render={(data : any) => (
       <>
-      {console.log('data.techs.edges', data.techs.edges)}
         <TopContainer>
           <Title>Welcome</Title>
           <Content>this will something that I have to say to introduce myself</Content>
@@ -75,7 +61,6 @@ const Home = () => (
         <ProjectsContainer>
           <ProjectsList>
             {data.projects.edges.map((project, index) => {
-              // console.log('node', project.node.mainImage.asset.fixed)
             return <ProjectCard
                     key={index + project.node._id}
                     slug={`/projects/${project.node.slug.current}`}
@@ -83,7 +68,6 @@ const Home = () => (
                     image={project.node.mainImage.asset.fluid}
                     description={project.node.description}
                     techs={project.node.techs}
-                    techsImageQuery={data.techs.edges}
                     index={index}
                   />
               })

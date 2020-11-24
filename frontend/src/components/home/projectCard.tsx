@@ -15,30 +15,9 @@ interface props {
   description: string,
   techs: TechLink[],
   index: number,
-  techsImageQuery: any,
 };
 
-const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, description, techs, index, techsImageQuery }) => {
-  // const imageSrc = extractCorrectImageFromQuery(techsImageQuery, tech.title);
-
-  const Image = (title : string) => {
-    const imageSrc = extractCorrectImageFromQuery(techsImageQuery, title);
-    console.log('typeof imageSrc', typeof imageSrc)
-    if (!imageSrc) return
-    console.log('+++++')
-    console.log('title, imageSrc', title, imageSrc)
-    return (
-      // <div style={{width: "200px", height: "200px"}}>
-        <Img 
-        fluid={imageSrc.fluid}
-        alt={title+'Img'}
-        imgStyle={{ objectFit: 'contain', maxHeight: "200px", maxWidth: '200px'}}
-        />
-        // </div>
-    )
-  }
-
-  console.log('techs[0]', techs[0])
+const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, description, techs, index }) => {
 
   return (
     <Wrapper data-css='ProjectCard' index={index}>
@@ -58,8 +37,6 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
           <Techs>
             {techs.map((tech : TechLink) => <Tech>
               <a target="__blank" href={tech.link}>{tech.title}</a>
-              {/* {Image(tech.title)} */}
-              {console.log('tech++++++', tech)}
               {tech.logo && <Img 
                 fluid={tech.logo.asset.fluid}
                 alt={tech.title+' Img'}
@@ -76,10 +53,6 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
 }
 
 export default ProjectCard;
-
-// export const query = graphql`
-
-// `
 
 const Wrapper = styled.li<{index : number}>`
   position: relative;
