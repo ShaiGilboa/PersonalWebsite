@@ -55,7 +55,12 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
           <Techs>
             {techs.map((tech : TechLink) => <Tech>
               <a target="__blank" href={tech.link}>{tech.title}</a>
-              {Image(tech.title)}
+              {/* {Image(tech.title)} */}
+              <Img 
+                fluid={tech.logo.fluid}
+                alt={tech.title+' Img'}
+                imgStyle={{ objectFit: 'contain', maxHeight: "200px", maxWidth: '200px'}}
+              />
             </Tech>)}
           </Techs>
       </Photo>

@@ -35,6 +35,11 @@ export default {
       title: 'Content',
       type: 'blockContent'
     },
+    {
+      name: 'test',
+      title: 'Test',
+      type: 'string',
+    }
     
   ]
 }

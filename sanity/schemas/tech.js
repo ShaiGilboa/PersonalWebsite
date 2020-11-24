@@ -21,18 +21,23 @@ export default {
         hotspot: true
       }
     },
+    {
+      name: 'test',
+      title: 'Test',
+      type: 'string'
+    },
   ],
-  prepare(selection) {
-    const {status, title, media, subtitle} = selection;
-    const EMOJIS = {
-      development: '🎫',
-      done: '✅',
-      "fixer-upper": '🚫'
-    }
-    console.log('slection',selection)
-    return {
-      ...selection,
-      status: EMOJIS[status]
-    }
-  }
+  // prepare(selection) {
+  //   const {status, title, media, subtitle} = selection;
+  //   const EMOJIS = {
+  //     development: '🎫',
+  //     done: '✅',
+  //     "fixer-upper": '🚫'
+  //   }
+  //   console.log('slection',selection)
+  //   return {
+  //     ...selection,
+  //     status: EMOJIS[status]
+  //   }
+  // }
 }
