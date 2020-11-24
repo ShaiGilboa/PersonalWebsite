@@ -36,12 +36,18 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
         </Link>
           <Techs>
             {techs.map((tech : TechLink) => <Tech>
-              <a target="__blank" href={tech.link}>{tech.title}</a>
-              {tech.logo && <Img 
-                fluid={tech.logo.asset.fluid}
-                alt={tech.title+' Img'}
-                imgStyle={{ objectFit: 'contain', maxHeight: "200px", maxWidth: '200px'}}
-              />}
+              <a target="__blank" href={tech.link}>
+              {tech.logo ? 
+                <Img 
+                  fluid={tech.logo.asset.fluid}
+                  alt={tech.title+' Img'}
+                  imgStyle={{ objectFit: 'contain', 
+                  height: "100%", width: '100%'
+                }}
+                />
+                : tech.title
+              }
+              </a>
             </Tech>)}
           </Techs>
       </Photo>
@@ -125,8 +131,8 @@ const Techs = styled.ul`
 
 const Tech = styled.li`
   padding: 5px;
-  width:200px;
-  height:200px;
+  width:50px;
+  height:50px;
   a {
     width: fit-content;
   }
