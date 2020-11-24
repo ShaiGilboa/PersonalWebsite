@@ -30,11 +30,13 @@ const Home = () => (
                 techs {
                   title
                   link
-                  # logo {
-                  #   fluid {
-                  #     ...GatsbySanityImageFluid
-                  #   }
-                  # }
+                  logo {
+                    asset {
+                      fluid {
+                        ...GatsbySanityImageFluid
+                      }
+                    }
+                  }
                 }
                 mainImage {
                   asset {

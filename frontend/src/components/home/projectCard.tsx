@@ -37,6 +37,9 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
         // </div>
     )
   }
+
+  console.log('techs[0]', techs[0])
+
   return (
     <Wrapper data-css='ProjectCard' index={index}>
       <Photo>
@@ -56,11 +59,12 @@ const ProjectCard : React.FC<PropsWithChildren<props>> = ({ title, slug, image, 
             {techs.map((tech : TechLink) => <Tech>
               <a target="__blank" href={tech.link}>{tech.title}</a>
               {/* {Image(tech.title)} */}
-              <Img 
-                fluid={tech.logo.fluid}
+              {console.log('tech++++++', tech)}
+              {tech.logo && <Img 
+                fluid={tech.logo.asset.fluid}
                 alt={tech.title+' Img'}
                 imgStyle={{ objectFit: 'contain', maxHeight: "200px", maxWidth: '200px'}}
-              />
+              />}
             </Tech>)}
           </Techs>
       </Photo>

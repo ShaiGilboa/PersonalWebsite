@@ -13,8 +13,10 @@ export interface seoProps {
 export interface TechLink {
   title: string,
   link: string,
-  logo: undefined | {
-    fluid?: FluidObject | FluidObject[] ,
-    fixed?: FixedObject | FixedObject[],
+  logo: undefined | null | {
+    asset: {
+      fluid?: FluidObject | FluidObject[] ,
+      fixed?: FixedObject | FixedObject[],
+    }
   }
 }
