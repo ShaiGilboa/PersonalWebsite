@@ -12,7 +12,15 @@ export default {
       name: 'link',
       title: 'Link',
       type: 'url'
-    }
+    },
+    {
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
   ],
   prepare(selection) {
     const {status, title, media, subtitle} = selection;
