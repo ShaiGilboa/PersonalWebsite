@@ -12,19 +12,32 @@ export default {
       name: 'link',
       title: 'Link',
       type: 'url'
-    }
+    },
+    {
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'test',
+      title: 'Test',
+      type: 'string'
+    },
   ],
-  prepare(selection) {
-    const {status, title, media, subtitle} = selection;
-    const EMOJIS = {
-      development: '🎫',
-      done: '✅',
-      "fixer-upper": '🚫'
-    }
-    console.log('slection',selection)
-    return {
-      ...selection,
-      status: EMOJIS[status]
-    }
-  }
+  // prepare(selection) {
+  //   const {status, title, media, subtitle} = selection;
+  //   const EMOJIS = {
+  //     development: '🎫',
+  //     done: '✅',
+  //     "fixer-upper": '🚫'
+  //   }
+  //   console.log('slection',selection)
+  //   return {
+  //     ...selection,
+  //     status: EMOJIS[status]
+  //   }
+  // }
 }

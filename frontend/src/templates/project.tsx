@@ -1,21 +1,38 @@
 import React, { PropsWithChildren } from 'react';
-import { graphql } from "gatsby"
+import { graphql } from "gatsby";
+import Img from 'gatsby-image'
 import styled from '@emotion/styled';
+import BlockContent from '@sanity/block-content-to-react';
+
+import MainLayout from '../layouts/main';
 
 interface props {
   style?: React.CSSProperties,
   data: any,
 };
 
+const serializers = {
+  types: {
+    code: props => (
+      <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+    )
+  }
+}
+
 export const query = graphql`
   query ProjectInfo ($id : String!) {
-    info: sanityProject (_id: { eq: $id}) {
+    project: sanityProject (_id: { eq: $id}) {
       description
       title
       mainImage {
         asset {
           url
           path
+          fluid(maxHeight: 400) {
+            ...GatsbySanityImageFluid
+          }
         }
       }
       techs {
@@ -39,11 +56,15 @@ export const query = graphql`
 `
 
 const Project : React.FC<PropsWithChildren<props>> = ({ data }) => {
-  console.log('data', data)
+  const { project } = data;
+  console.log('project', project.body)
   return (
-    <Wrapper data-css='Project'>
-      Project
-    </Wrapper>
+    <MainLayout>
+      <Wrapper data-css='Project'>
+        Project
+      </Wrapper>
+      <BlockContent blocks={project.body[0]._rawChildren} serializers={serializers}/>
+    </MainLayout>
   )
 }
 

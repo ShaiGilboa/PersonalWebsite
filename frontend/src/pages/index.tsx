@@ -10,6 +10,8 @@ import "../css/App.css"
 import Layout from "../layouts/main";
 import Main from "../components/general/main";
 import ProjectCard from '../components/home/projectCard';
+import { MEDIA } from "../utils/constants";
+import { extractCorrectImageFromQuery } from "../utils/functions";
 
 const Home = () => (
   <Layout>
@@ -28,12 +30,19 @@ const Home = () => (
                 techs {
                   title
                   link
+                  logo {
+                    asset {
+                      fluid {
+                        ...GatsbySanityImageFluid
+                      }
+                    }
+                  }
                 }
                 mainImage {
                   asset {
                     path
                     url
-                    fluid(maxWidth: 10) {
+                    fluid(maxHeight: 400) {
                       ...GatsbySanityImageFluid
                     }
                   }
@@ -45,27 +54,26 @@ const Home = () => (
       `}
       render={(data : any) => (
       <>
-        <Navbar />
-        <Main>
+        <TopContainer>
           <Title>Welcome</Title>
           <Content>this will something that I have to say to introduce myself</Content>
-          <ProjectsContainer>
-            <ProjectsList>
-              {data.projects.edges.map((project, index) => {
-                // console.log('node', project.node.mainImage.asset.fixed)
-              return <ProjectCard
-                      key={index + project.node._id}
-                      slug={`/projects/${project.node.slug.current}`}
-                      title={project.node.title}
-                      image={project.node.mainImage.asset.fluid}
-                      description={project.node.description}
-                      techs={project.node.techs}
-                    />
-                })
-              }
-            </ProjectsList>
-          </ProjectsContainer>
-        </Main>
+        </TopContainer>
+        <ProjectsContainer>
+          <ProjectsList>
+            {data.projects.edges.map((project, index) => {
+            return <ProjectCard
+                    key={index + project.node._id}
+                    slug={`/projects/${project.node.slug.current}`}
+                    title={project.node.title}
+                    image={project.node.mainImage.asset.fluid}
+                    description={project.node.description}
+                    techs={project.node.techs}
+                    index={index}
+                  />
+              })
+            }
+          </ProjectsList>
+        </ProjectsContainer>
       </>
       )}
     />
@@ -73,6 +81,20 @@ const Home = () => (
 )
 
 export default Home;
+
+const TopContainer = styled.div`
+  
+  @media (min-width: ${MEDIA.tablet}) {
+    height: 90vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    text-align: center;
+
+  }
+`;
 
 const Title = styled.h1`
 

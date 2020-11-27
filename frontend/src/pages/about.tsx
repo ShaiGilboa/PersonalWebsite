@@ -16,12 +16,9 @@ const About : React.FC<PropsWithChildren<props>> = () => {
 
   return (
     <MainLayout>
-    <Navbar />
-    <Main>
       <Wrapper data-css='About'>
         About
       </Wrapper>
-    </Main>
     </MainLayout>
   )
 }

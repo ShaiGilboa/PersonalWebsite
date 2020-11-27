@@ -1,3 +1,4 @@
+import { FixedObject, FluidObject } from 'gatsby-image';
 type metaInstance  = ({ name: string; content: string; property?: undefined; } | { property: string; content: string; name?: undefined; })
 
 export interface seoProps {
@@ -12,4 +13,10 @@ export interface seoProps {
 export interface TechLink {
   title: string,
   link: string,
+  logo: undefined | null | {
+    asset: {
+      fluid?: FluidObject | FluidObject[] ,
+      fixed?: FixedObject | FixedObject[],
+    }
+  }
 }

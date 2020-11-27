@@ -14,15 +14,12 @@ const Contact : React.FC<PropsWithChildren<props>> = () => {
 
   return (
     <MainLayout>
-      <Navbar />
-      <Main>
-        <Wrapper data-css='Contact'>
-          Contact
-          <MessageForm>
-            
-          </MessageForm>
-        </Wrapper>
-      </Main>
+      <Wrapper data-css='Contact'>
+        Contact
+        <MessageForm>
+          
+        </MessageForm>
+      </Wrapper>
     </MainLayout>
   )
 }

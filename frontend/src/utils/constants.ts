@@ -6,3 +6,5 @@ export const MEDIA = {
 export const COLORS = {
   "logo-bg": '#625772',
 }
+
+export const CurrentURL : string = 'localhost:8000';
